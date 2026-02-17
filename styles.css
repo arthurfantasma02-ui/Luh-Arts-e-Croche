@@ -1,0 +1,223 @@
+/* Variáveis de Cores */
+:root {
+    --rosa-suave: #fce4ec;
+    --violeta-principal: #7b1fa2; /* Violeta vibrante */
+    --rosa-claro: #f06292; /* Rosa médio */
+    --roxo-escuro: #4a148c;
+    --branco-gelo: #fdfbff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--branco-gelo);
+    color: #444;
+}
+
+/* Header */
+.header {
+    background-color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, var(--violeta-principal), var(--rosa-claro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* Container do Hero precisa ser position relative */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Corta o que sobrar do vídeo */
+}
+
+/* O vídeo em si */
+.video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2; /* Joga o vídeo para trás de tudo */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Garante que o vídeo preencha tudo sem esticar */
+}
+
+/* Camada escura para o texto ficar legível */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 20, 140, 0.4); /* Roxo transparente */
+    z-index: -1; /* Fica entre o vídeo e o texto */
+}
+
+.hero-content {
+    z-index: 1; /* Garante que o texto fique na frente */
+    color: white;
+}
+
+/* NO PC: Esconder o vídeo e mostrar a imagem fixa se preferir */
+@media (min-width: 769px) {
+    .video-bg {
+        display: none; /* Se quiser vídeo só no celular, esconda no PC */
+    }
+    .hero {
+        background: linear-gradient(rgba(74, 20, 140, 0.5), rgba(0,0,0,0.3)), 
+                    url("fundo/img-pc.jpg") no-repeat center center/cover;
+    }
+}
+
+/* Seção Hero - Preparada para Imagem/Vídeo */
+.hero {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    /* Fundo para PC - substitua pelo seu caminho */
+    background: linear-gradient(rgba(74, 20, 140, 0.5), rgba(0,0,0,0.3)), 
+                url("fundo/img-pc.jpg") no-repeat center center/cover;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.btn-cta-hero {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--violeta-principal);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(123, 31, 162, 0.3);
+}
+
+.btn-cta-hero:hover {
+    background: var(--rosa-claro);
+    transform: translateY(-3px);
+}
+
+/* Grid de Produtos */
+.produtos-container {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.produtos-container h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: var(--roxo-escuro);
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card-produto {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card-produto:hover {
+    transform: translateY(-10px);
+}
+
+.card-produto img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-comprar {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--violeta-principal);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid var(--violeta-principal);
+}
+
+/* Seção Final */
+.cta-final {
+    background-color: var(--rosa-suave);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.cta-box {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-cta-final {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 40px;
+    border: 2px solid var(--violeta-principal);
+    color: var(--violeta-principal);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+/* Responsivo para Mobile */
+@media (max-width: 768px) {
+    .hero {
+        /* Fundo para Mobile - aqui você coloca o seu vídeo */
+        background: linear-gradient(rgba(240, 98, 146, 0.6), rgba(74, 20, 140, 0.6)), 
+                    url("fundo/video-mobile.jpg") no-repeat center center/cover;
+    }
+    
+    .hero h1 { font-size: 2.2rem; }
+    .logo { font-size: 2rem; }
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+}
